@@ -51,7 +51,7 @@ class PDFOCRConverter {
 
     async extractPDFText(pdf, progressDiv) {
         const numPages = pdf.numPages;
-        const extracted ConnectionState = [];
+        const extractedPages = [];
 
         for (let pageNum = 1; pageNum <= numPages; pageNum++) {
             const page = await pdf.getPage(pageNum);
@@ -83,13 +83,13 @@ class PDFOCRConverter {
                 }
             );
 
-            extracted ConnectionState.push({
+            extractedPages.push({
                 pageNumber: pageNum,
                 text: result.data.text
             });
         }
 
-        return extracted ConnectionState;
+        return extractedPages;
     }
 
     createProgressBar(fileName) {
